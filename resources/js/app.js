@@ -19,7 +19,10 @@ createInertiaApp({
     }
   
     page = page.default;
-    page.layout = page.layout || Layout;
+
+    // Only apply layout if it's not explicitly set to null
+    page.layout = page.layout === undefined ? Layout : page.layout;
+
     return page;
   },
   setup({ el, App, props, plugin }) {
