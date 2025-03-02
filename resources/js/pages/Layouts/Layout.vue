@@ -1,4 +1,15 @@
+
+<script setup>
+import { route } from '../../../../vendor/tightenco/ziggy/src/js';
+
+// import { Link,Head } from '@inertiajs/vue3';
+</script>
+
+
 <template>
+   <!-- <Head>
+       <title>My App</title>
+   </Head> -->
    <div class="main-wrapper">
    <div class="header">
       <div class="header-left">
@@ -38,7 +49,7 @@
                <div class="noti-content">
                   <ul class="notification-list">
                      <li class="notification-message">
-                        <a href="activities.html">
+                        <Link  href="activities.html">
                            <div class="media">
                               <span class="avatar avatar-sm">
                               <img class="avatar-img rounded-circle" alt="" :src="'/assets/img/profiles/avatar-02.jpg'">
@@ -48,7 +59,7 @@
                                  <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
                               </div>
                            </div>
-                        </a>
+                        </Link>
                      </li>
                      <li class="notification-message">
                         <a href="activities.html">
@@ -159,22 +170,22 @@
                </div>
                <ul>
                   <li class="active">
-                     <a href="index.html"><img :src="'/assets/img/home.svg'" alt="sidebar_img"> <span>Dashboard</span></a>
+                     <Link  :href="route('home')"><img :src="'/assets/img/home.svg'" alt="sidebar_img"> <span>Dashboard</span></Link >
                   </li>
                   <li>
-                     <a href="employee.html"><img :src="'/assets/img/employee.svg'" alt="sidebar_img"><span> Employees</span></a>
+                     <Link  href="/employee.html"><img :src="'/assets/img/employee.svg'" alt="sidebar_img"><span> Employees</span></Link >
                   </li>
                   <li>
-                     <a href="company.html"><img :src="'/assets/img/company.svg'" alt="sidebar_img"> <span> Company</span></a>
+                     <Link  href="/company.html"><img :src="'/assets/img/company.svg'" alt="sidebar_img"> <span> Company</span></Link >
                   </li>
                   <li>
-                     <a href="calendar.html"><img :src="'/assets/img/calendar.svg'" alt="sidebar_img"> <span>Calendar</span></a>
+                     <Link href="/calendar.html"><img :src="'/assets/img/calendar.svg'" alt="sidebar_img"> <span>Calendar</span></Link>
                   </li>
                   <li>
-                     <a href="leave.html"><img :src="'/assets/img/leave.svg'" alt="sidebar_img"> <span>Leave</span></a>
+                     <Link  href="/leave.html"><img :src="'/assets/img/leave.svg'" alt="sidebar_img"> <span>Leave</span></Link>
                   </li>
                   <li>
-                     <a href="review.html"><img :src="'/assets/img/review.svg'" alt="sidebar_img"><span>Review</span></a>
+                     <Link  href="/review.html"><img :src="'/assets/img/review.svg'" alt="sidebar_img"><span>Review</span></Link>
                   </li>
                   <li>
                      <a href="report.html"><img :src="'/assets/img/report.svg'" alt="sidebar_img"><span>Report</span></a>
@@ -205,10 +216,6 @@
    </div>
 </div>
 </template>
-
-<script setup>
-
-</script>
 
 <style lang="scss" scoped>
 

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
     @vite('resources/js/app.js')
     @inertiaHead
+    @routes
   </head>
   <body>
     @inertia
