@@ -170,10 +170,10 @@ import { route } from '../../../../vendor/tightenco/ziggy/src/js';
                </div>
                <ul>
                   <li class="active">
-                     <Link  :href="route('home')"><img :src="'/assets/img/home.svg'" alt="sidebar_img"> <span>Dashboard</span></Link >
+                     <Link :href="route('home')"><img :src="'/assets/img/home.svg'" alt="sidebar_img"> <span>Dashboard</span></Link >
                   </li>
                   <li>
-                     <Link  href="/employee.html"><img :src="'/assets/img/employee.svg'" alt="sidebar_img"><span> Employees</span></Link >
+                     <Link :href="route('register')"><img :src="'/assets/img/employee.svg'" alt="sidebar_img"><span> Employees</span></Link >
                   </li>
                   <li>
                      <Link  href="/company.html"><img :src="'/assets/img/company.svg'" alt="sidebar_img"> <span> Company</span></Link >

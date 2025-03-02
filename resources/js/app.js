@@ -10,17 +10,24 @@ import {ZiggyVue} from '../../vendor/tightenco/ziggy';
 createInertiaApp({
   title:(title)=>`My App ${title}`,
   resolve: name => {
-    const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
-    let page=pages[`./Pages/${name}.vue`]
-    page.default.layout=page.default.layout || Layout
-    return page;    
+    const pages = import.meta.glob('/resources/js/pages/**/*.vue', { eager: true });
+    let page = pages[`/resources/js/pages/${name}.vue`];
+  
+    if (!page) {
+      console.error(`Page "${name}" not found. Available pages:`, Object.keys(pages));
+      throw new Error(`Page "${name}" not found.`);
+    }
+  
+    page = page.default;
+    page.layout = page.layout || Layout;
+    return page;
   },
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin) 
       .use(ZiggyVue)
       .component('Head',Head) 
-      .component('Head',Link) 
+      .component('Link',Link) 
       .mount(el)      
   },
   progress: { 
