@@ -131,7 +131,7 @@ import { route } from '../../../../vendor/tightenco/ziggy/src/js';
             <div class="dropdown-menu">
                <a class="dropdown-item" href="profile.html"><i data-feather="user" class="mr-1"></i> Profile</a>
                <a class="dropdown-item" href="settings.html"><i data-feather="settings" class="mr-1"></i> Settings</a>
-               <a class="dropdown-item" href="login.html"><i data-feather="log-out" class="mr-1"></i> Logout</a>
+               <Link class="dropdown-item" :href="route('logout')" method="post" as="button">Logout</Link>
             </div>
          </li>
       </ul>
@@ -140,7 +140,7 @@ import { route } from '../../../../vendor/tightenco/ziggy/src/js';
          <div class="dropdown-menu dropdown-menu-right ">
             <a class="dropdown-item" href="profile.html">My Profile</a>
             <a class="dropdown-item" href="settings.html">Settings</a>
-            <Link class="dropdown-item" href="/">Logout</Link>
+            <Link class="dropdown-item" :href="route('logout')" method="post" as="button">Logout</Link>
          </div>
       </div>
    </div>
@@ -169,8 +169,8 @@ import { route } from '../../../../vendor/tightenco/ziggy/src/js';
                   </div>
                </div>
                <ul>
-                  <li class="active">
-                     <Link :href="route('home')"><img :src="'/assets/img/home.svg'" alt="sidebar_img"> <span>Dashboard</span></Link >
+                  <li>
+                     <Link :href="route('home')" :class="{'active':$page.component=='Home'}"><img :src="'/assets/img/home.svg'" alt="sidebar_img"> <span>Dashboard</span></Link >
                   </li>
                   <li>
                      <Link :href="route('register')"><img :src="'/assets/img/employee.svg'" alt="sidebar_img"><span> Employees</span></Link >
