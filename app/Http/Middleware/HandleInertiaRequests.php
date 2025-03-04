@@ -39,8 +39,8 @@ class HandleInertiaRequests extends Middleware
             //shared data
             //'auth.name'=>'Dennis Mutemi'?? null,
             // Lazily...
-            'auth.user' => fn () => $request->user()
-                ? $request->user()->only('id', 'name', 'email')
+            'auth.user' => fn() => $request->user()
+                ? $request->user()->only('id', 'name', 'email', 'avatar')
                 : null,
         ]);
     }

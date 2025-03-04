@@ -1,8 +1,9 @@
 
 <script setup>
-        import { reactive } from 'vue';
-        import { router ,useForm} from '@inertiajs/vue3';
+        // import { reactive } from 'vue';
+        import { useForm} from '@inertiajs/vue3';
         import Textinput from '../Components/Textinput.vue';
+// import { preview } from 'vite';
 
         defineOptions({
         layout: null
@@ -19,8 +20,14 @@
             name:null,
             email:null,
             password:null,
-            password_confirmation:null
+            password_confirmation:null,
+            avatar:null,
+            preview:null
         })
+        const change=(e)=>{
+            form.avatar=e.target.files[0];
+            form.preview=URL.createObjectURL(e.target.files[0]);
+        }
         const submit=()=>{
             //console.log(form);
             //router.post('/register',form);
@@ -42,11 +49,26 @@
                             <h1>Register</h1>
                             <p class="account-subtitle">Access to our dashboard</p>
                             <form @submit.prevent="submit">
+                                <div class="mb-3">
+                                    <label for="avatar" class="form-label">Profile Picture</label>
+                                    <input 
+                                        class="form-control" 
+                                        type="file" 
+                                        id="avatar" 
+                                        @input="change"
+                                    >
+                                    <div v-if="form.errors.avatar" class="invalid-feedback">
+                                        {{ form.errors.avatar }}
+                                    </div>
+                                    <div v-if="form.avatar" class="mt-3">
+                                        <img :src="form.preview" class="img-thumbnail" alt="Profile Picture Preview" style="max-width: 200px;">
+                                    </div>
+                                </div>
                                 <Textinput 
                                     name="Name" 
                                     v-model="form.name" 
                                     :message="form.errors.name"
-                                />
+                                />                              
                                 <Textinput 
                                     name="Email" 
                                     type="email" 

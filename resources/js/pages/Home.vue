@@ -20,7 +20,7 @@ defineProps({
 
    
 <div class="page-name 	mb-4">
-   <h4 class="m-0"><img :src="'/assets/img/profiles/avatar-14.jpg'" class="mr-1" alt="profile" /> Welcome {{ $page.props.auth.user.name }}</h4>
+   <h4 class="m-0"><img :src="$page.props.auth.user.avatar?('storage/'+$page.props.auth.user.avatar):('storage/avatars/avatar-03.jpg')" class="mr-1" alt="profile" /> Welcome {{ $page.props.auth.user.name }}</h4>
    <label>Sun, 1 OCT 2024</label>
 </div>
 <div class="row mb-4">
