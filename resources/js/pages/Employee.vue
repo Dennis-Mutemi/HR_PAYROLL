@@ -1,7 +1,8 @@
 <script setup>
 import { route } from '../../../vendor/tightenco/ziggy/src/js';
+import PaginationLink from './Components/PaginationLink.vue';
 defineProps({
-    User: Object
+    Users: Object
 })
 </script>
 <template>
@@ -53,7 +54,7 @@ defineProps({
                 <div class="card">
                     <div class="table-heading">
                         <h2>Project Summary</h2>
-                    </div>
+                    </div>                
                     <div class="table-responsive">
                         <table class="table custom-table no-footer">
                             <thead>
@@ -67,18 +68,19 @@ defineProps({
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+
+                                <tr v-for="user in Users.data" :key="user.id">
                                     <td>
                                         <div class="table-img">
                                             <a href="profile.html">
-                                                <img :src="'assets/img/profiles/avatar-13.jpg'" alt="profile" class="img-table" />
-                                                <label>Sean Black</label>
+                                                <img :src="user.avatar?('storage/'+$page.props.auth.user.avatar):('storage/avatars/avatar-03.jpg')" alt="profile" class="img-table" />
+                                                <label>{{ user.name }}</label>
                                             </a>
                                         </div>
                                     </td>
-                                    <td><label class="action_label">Richard Wilson</label></td>
+                                    <td><label class="action_label">{{ user.name }}</label></td>
                                     <td><label class="action_label2">Design</label></td>
-                                    <td><label>Jassa</label></td>
+                                    <td><label>{{ user.email }}</label></td>
                                     <td><label>Team Lead</label></td>
                                     <td class="tab-select">
                                         <select class="select">
@@ -86,137 +88,19 @@ defineProps({
                                             <option value="inactive">Inactive</option>
                                         </select>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="table-img">
-                                            <a href="profile.html">
-                                                <img :src="'assets/img/profiles/avatar-16.jpg'" alt="profile" class="img-table" />
-                                                <label>Linda Craver</label>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td><label class="action_label">Richard Wilson</label></td>
-                                    <td><label class="action_label2">IOS</label></td>
-                                    <td><label>Jassa</label></td>
-                                    <td><label>Team Lead</label></td>
-                                    <td class="tab-select">
-                                        <select class="select">
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="table-img">
-                                            <a href="profile.html">
-                                                <img :src="'assets/img/profiles/avatar-17.jpg'" alt="profile" class="img-table" />
-                                                <label>Jenni Sims</label>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td><label class="action_label">Richard Wilson</label></td>
-                                    <td><label class="action_label2">Android</label></td>
-                                    <td><label>Jassa</label></td>
-                                    <td><label>Team Lead</label></td>
-                                    <td class="tab-select">
-                                        <select class="select">
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="table-img">
-                                            <a href="profile.html">
-                                                <img :src="'assets/img/profiles/avatar-19.jpg'" alt="profile" class="img-table" />
-                                                <label>Stacey Linville</label>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td><label class="action_label">Richard Wilson</label></td>
-                                    <td><label class="action_label2">Testing</label></td>
-                                    <td><label>Jassa</label></td>
-                                    <td><label>Team Lead</label></td>
-                                    <td class="tab-select">
-                                        <select class="select">
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="table-img">
-                                            <a href="profile.html">
-                                                <img :src="'assets/img/profiles/avatar-14.jpg'" alt="profile" class="img-table" />
-                                                <label>Maria Cotton</label>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td><label class="action_label">Richard Wilson</label></td>
-                                    <td><label class="action_label2">PHP</label></td>
-                                    <td><label>Jassa</label></td>
-                                    <td><label>Team Lead</label></td>
-                                    <td class="tab-select">
-                                        <select class="select">
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="table-img">
-                                            <a href="profile.html">
-                                                <img :src="'assets/img/profiles/avatar-18.jpg'" alt="profile" class="img-table" />
-                                                <label>John Gibbs</label>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td><label class="action_label">Richard Wilson</label></td>
-                                    <td><label class="action_label2">PHP</label></td>
-                                    <td><label>Jassa</label></td>
-                                    <td><label>Team Lead</label></td>
-                                    <td class="tab-select">
-                                        <select class="select">
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="table-img">
-                                            <a href="profile.html">
-                                                <img :src="'assets/img/profiles/avatar-10.jpg'" alt="profile" class="img-table" />
-                                                <label>Richard Wilson</label>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td><label class="action_label in_active">No</label></td>
-                                    <td><label class="action_label2">Business</label></td>
-                                    <td><label>Jassa</label></td>
-                                    <td><label>Super Admin</label></td>
-                                    <td class="tab-select">
-                                        <select class="select">
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </tbody>
+                                </tr> 
+
+                            </tbody>                            
                         </table>
+                        <div>
+                           <PaginationLink :paginator="Users" />
+                        </div>                       
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
-
 <style lang="scss" scoped>
 
 </style>

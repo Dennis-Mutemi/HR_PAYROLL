@@ -16,7 +16,8 @@ use App\Models\User;
 Route::middleware('auth')->group(function () {
     Route::inertia('/home', 'Home', ['Users' => 'Dennis'])->name('home');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::inertia('/employee', 'Employee', ['Users' => User::all()])->name('Employee');
+    Route::inertia('/employee', 'Employee', ['Users' => User::paginate(5)])->name('Employee');
+    //Route::inertia('/employee', 'Employee', ['Users' => User::all(['name'])])->name('Employee');
     Route::inertia('/addemployee', 'AddEmployee')->name('addemployee');
 });
 
