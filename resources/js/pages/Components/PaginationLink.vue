@@ -1,11 +1,15 @@
 <template>  
-    <ul class="pagination"  v-for="link in paginator.links" :key="link.url">
-        <component 
-            :is="link.active ? 'li' : 'a'" 
-            :class="{'page-item':true,'disabled':!link.url,'active':link.active}" 
-            :href="link.url"                 
-            v-html="makelabel(link.label)">
-        </component>
+    <ul class="pagination d-flex justify-content-center">
+        <li 
+            v-for="link in paginator.links" 
+            :key="link.url" 
+            :class="{'page-item': true, 'disabled': !link.url, 'active': link.active}">
+            <a 
+                class="page-link" 
+                :href="link.url" 
+                v-html="makelabel(link.label)">
+            </a>
+        </li>
     </ul>
     <p class="text-center">Showing {{ paginator.from }} to {{ paginator.to }} of {{ paginator.total }} entries</p> 
 </template>
